@@ -36,8 +36,8 @@
                                 <div class="form-group">
                                     <label for="">Funcion</label>
                                     <select class="form-control" name="cmbFuncion" id="cmbFuncion">
-                                        <option>x^2 - x</option>
-                                        <option>sen(x) - 3</option>
+                                        <option value="-0.874*Math.pow(x,2) + 1.75*x + 2.627">x^2 - x</option>
+                                        <option value="Math.sin(x) - 3">sen(x) - 3</option>
                                     </select>
                                 </div>
                             </td>
@@ -47,9 +47,9 @@
                                 <div class="form-group">
                                     <label for="">Metodo</label>
                                     <select class="form-control" name="cmbMetodo" id="cmbMetodo">
-                                        <option>Biseccion</option>
-                                        <option>Falsa Posicion</option>
-                                        <option>Newton Rhapson</option>
+                                        <option value="1">Biseccion</option>
+                                        <option value="2">Falsa Posicion</option>
+                                        <option value="3">Newton Rhapson</option>
                                     </select>
                                 </div>
                             </td>
@@ -73,7 +73,7 @@
                                 <div class="form-group">
                                     <label for="">Tolerancia</label>
                                     <input type="text"
-                                        class="form-control form-control-sm" name="txtTolerancia" id="txtTolerancia" aria-describedby="helpId" placeholder="">
+                                        class="form-control form-control-sm" name="txtCifras" id="txtCifras" aria-describedby="helpId" placeholder="">
                                 </div>
                             </td>
                         </tr>
