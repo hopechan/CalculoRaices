@@ -33,7 +33,7 @@ function(event){
 
 class Calcular{
     biseccion(f, a, b, cifras){
-        var xi, xu, xr,nivelTol,error,convergencia;
+        var xi, xu, xr,nivelTol,convergencia;
         //1 -> valores iniciales
         xi = a;
         xu = b;
@@ -70,6 +70,40 @@ class Calcular{
 
     falsaPosicion(f, a, b, cifras){
         console.log('Estas en falsa posicion');
+        var xi, xu, xr,nivelTol,convergencia;
+        //1 -> valores iniciales
+        xi = a;
+        xu = b;
+        //2 -> Verificar cambio de signo
+        var fxi = Utilidades.prototype.evalFuncion(f,xi);
+        var fxu = Utilidades.prototype.evalFuncion(f,xu);
+        //console.log(`xi = ${xi} xu = ${xu}`);
+        //console.log(`fxi: ${fxi} fxu: ${fxu}`);
+        if (fxi*fxu < 0) {
+            //3
+            nivelTol = (0.5*Math.pow(10, (2 - cifras))) / 100;
+            console.log(`${nivelTol}`);
+            //4
+            convergencia = (Math.log((b - a)/(nivelTol))) / (Math.log(2));
+            xr = eval(xu) - ((eval(Utilidades.prototype.evalFuncion(f, xu))*(eval(xi) - eval(xu)))/(eval(Utilidades.prototype.evalFuncion(f, xi)) - eval(Utilidades.prototype.evalFuncion(f, xu))));
+            console.log(`convergencia: ${convergencia} xr = ${xr}`);
+            for (let index = 0; index < convergencia; index++) {
+                //console.log(`fxr: ${Utilidades.prototype.evalFuncion(f, xr)} fxi: ${Utilidades.prototype.evalFuncion(f, xi)}`);
+                var fxr = eval(Utilidades.prototype.evalFuncion(f, xr));
+                fxi = eval(Utilidades.prototype.evalFuncion(f, xi));
+                if (eval(fxr)*eval(fxi) > 0) {
+                    //console.log(`fxr: ${Utilidades.prototype.evalFuncion(f, xr)} fxi: ${Utilidades.prototype.evalFuncion(f, xi)}`);
+                    xi = xr;
+                } else {
+                    xu = xr;
+                }
+                xr = eval(xu) - ((eval(Utilidades.prototype.evalFuncion(f, xu))*(eval(xi) - eval(xu)))/(eval(Utilidades.prototype.evalFuncion(f, xi)) - eval(Utilidades.prototype.evalFuncion(f, xu))));
+            }
+            console.log(`xr: ${xr}`);
+        } else {
+            console.log("No existe raiz en el intervalo");
+        }
+        
     }
 
     newtonRaphson(f, a, b, da, db, cifras){
